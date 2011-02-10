@@ -2,7 +2,7 @@ class Appointment < ActiveRecord::Base
 
 	def Appointment.deleteAppointment(apo_id)
 		cita = Appointment.where(:id => apo_id).first
-		cita.delete
+		Appointment.delete(cita.id)
 	end
 	
 	def Appointment.modifyAppointment(appointment_id, medic_id, begin_time, end_time)
@@ -11,9 +11,9 @@ class Appointment < ActiveRecord::Base
 			puts "NO EXISTE ESE ID"
 		else
 			cita.medic_id=medic_id
-			nueva_cita.begin_time=begin_time
-			nueva_cita.end_time=end_time
-			nueva_cita.save
+			cita.begin_time=begin_time
+			cita.end_time=end_time
+			cita.save
 		end
 	end
 	
