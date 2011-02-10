@@ -2,7 +2,11 @@ class Appointment < ActiveRecord::Base
 
 	def Appointment.deleteAppointment(apo_id)
 		cita = Appointment.where(:id => apo_id).first
+		if cita== nil
+			puts "NO EXISTE ESE ID"
+		else
 		Appointment.delete(cita.id)
+		end
 	end
 	
 	def Appointment.modifyAppointment(appointment_id, medic_id, begin_time, end_time)
